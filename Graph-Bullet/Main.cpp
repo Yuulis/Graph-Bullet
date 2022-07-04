@@ -1,5 +1,7 @@
 ﻿#include <Siv3D.hpp> // OpenSiv3D v0.6.3
+#include "Base.h"
 #include "Player.h"
+#include "Enemy.h"
 
 void Main()
 {
@@ -19,16 +21,12 @@ void Main()
 
 	Window::Resize(width, height);
 
-	Player player;
-	player.Initialize(Vec2(width / 2, height / 2), 100);
+	Player player(Vec2(width / 2, height / 2), 100);
 
 	while (System::Update())
 	{
 		Window::SetTitle(U"Graph-Bullet");
 
-		player.Draw();
-
-		player.Move();
-		player.PositionClamp(width, height);
+		player.PlayerLoop();
 	}
 }
